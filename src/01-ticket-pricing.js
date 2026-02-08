@@ -23,5 +23,7 @@
  * @returns {number} The ticket price, or -1 for invalid input
  */
 export function getTicketPrice(age, isWeekend) {
-  // Your code here
+  if (typeof age !== 'number' || isNaN(age) || age < 0) return -1;
+  let base = age <= 12 ? 8 : age <= 17 ? 12 : age <= 59 ? 15 : 10;
+  return base + (isWeekend ? 3 : 0);
 }
